@@ -9,10 +9,10 @@ using UnityEngine;
 public class StatsSystem : MonoBehaviour
 {
     /// Our physical stats that determine our dancing stats.
+    public int strength;
     public int agility;
     public int intelligence;
-    public int strength;
-    //public int statPool = 20;
+    public int statPool = 21;
 
     // Our variables used to determine our fighting power.
     public int style;
@@ -25,29 +25,29 @@ public class StatsSystem : MonoBehaviour
         // BONUS! let's try taking our stats away from a pool of stats, i.e. 20 total, distributing this amoungst all the stats.
         Debug.Log("CHARACTER STATS:");
 
-        strength = Random.Range(0, 11);
-        agility = Random.Range(0, 11);
-        intelligence = Random.Range(0, 11);
+        strength = Random.Range(0, statPool);
+        agility = Random.Range(0, statPool - strength);
+        intelligence = Random.Range(0, statPool - strength - agility);
 
         // Debug out your current physical stat values (strength, agility, intelligence).
         Debug.Log("Player strength is " + strength);
-        Debug.Log("Player intelligence is " + intelligence);
         Debug.Log("Player agility is " + agility);
+        Debug.Log("Player intelligence is " + intelligence);
 
         // let's create some float temporary variables to hold our multiplier values.
 
-        // create an agility multiplier should be set to 0.5
-        float agilityMult = 0.5f;
-
         // create a strength multiplier should be set to 1
         float strengthMult = 1.0f;
+
+        // create an agility multiplier should be set to 0.5
+        float agilityMult = 0.5f;      
 
         // create an intelligence multiplier should be set to 2.
         float intelligenceMult = 2.0f;
 
         // Debug out our current multiplier values.
-        Debug.Log("Agility multiplier is set to 0.5");
         Debug.Log("Strength multiplier is set to 1");
+        Debug.Log("Agility multiplier is set to 0.5");
         Debug.Log("Intelligence multiplier is set to 2");
 
         // now that we have some stats and our multiplier values let's calculate our style, luck and ryhtmn based on these values.
@@ -69,23 +69,24 @@ public class StatsSystem : MonoBehaviour
 
         //these variables must hold the values changed by the statpool so they can be distributed among the stats
         int strengthAdd = Random.Range(0, additionalPoints);
-        int agilityAdd =  Random.Range(0, additionalPoints) - strengthAdd;
-        int intelligenceAdd = (additionalPoints) - strengthAdd - agilityAdd;
+        int agilityAdd =  Random.Range(0, additionalPoints-strengthAdd);
+        int intelligenceAdd = additionalPoints - strengthAdd - agilityAdd;
 
         // Debug out our new physical stat values
-        Debug.Log("New stats!");
-        Debug.Log("Strength is now " + strength + strengthAdd);
-        Debug.Log("Agility is now " + agility + agilityAdd);
-        Debug.Log("Intelligence is now " + intelligence + intelligenceAdd);
+        Debug.Log("Your stats have increased!");
+
+        Debug.Log("Strength is now " + (strength + strengthAdd));
+        Debug.Log("Agility is now " + (agility + agilityAdd));
+        Debug.Log("Intelligence is now " + (intelligence + intelligenceAdd));
 
         // let's recalculate our style, luck and rhytmn as our initial stats have changed.
-        style = strengthAdd * strengthMult;
-        luck = agilityAdd * agilityMult;
-        rhythm = intelligenceAdd * intelligenceMult;
+        style = (strength * strengthMult);
+        luck = (agility * agilityMult);
+        rhythm = (intelligence * intelligenceMult);
 
         // Debug out our new dancing stat values
-        Debug.Log(style);
-        Debug.Log(luck);
-        Debug.Log(rhythm);
+        Debug.Log("Style is now " + style);
+        Debug.Log("Luck is now " + luck);
+        Debug.Log("Rhythm is now " + rhythm);
     }   
 }

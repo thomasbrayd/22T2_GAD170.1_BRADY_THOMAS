@@ -35,19 +35,20 @@ public class LevellingSystem : MonoBehaviour
         // Debug out our current XP.
         Debug.Log("Current XP is 100");
 
-        // check if our current XP is more than our threshold.
-        // if it is, then let's increase out level by one.
-        // let's also increase recalculate our current xp threshold as we've levelled up.
-        // Debug out our new level value, as well as our current XP and our next Threshold we need to hit.
-
-        if (currentXp >= currentXPThreshold);
+        // check if our current XP is more than our threshold.       
+        
+        if(currentXp >= currentXPThreshold);
         {
-            currentLevel = 2;
-            currentXp = 0;
+            // if it is, then let's increase out level by one.
+            currentLevel + 1;
+            
+            // let's also increase recalculate our current xp threshold as we've levelled up.
             currentXPThreshold = currentLevel * 100;
+
+            // Debug out our new level value, as well as our current XP and our next Threshold we need to hit.          
             Debug.Log("Level Up!");
             Debug.Log("Current level is " + currentLevel);
-            Debug.Log("Current XP is " + currentXp);
+            Debug.Log("Current XP is " + currentXp - currentXPThreshold);
             Debug.Log("Current XP Threshold is " + currentXPThreshold);
         }
     }

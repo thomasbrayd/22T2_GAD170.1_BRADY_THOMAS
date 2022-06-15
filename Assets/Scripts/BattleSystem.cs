@@ -12,7 +12,7 @@ public class BattleSystem : MonoBehaviour
     {
         // let's start by setting our player dancing stats to random numbers
         // style should be random between 1-10
-        int playerOneStyle = Random.Range(1,11);
+        int playerOneStyle = Random.Range(1, 11);
         // luck should be random between 0-4
         int playerOneLuck = Random.Range(0, 5);
         // Rhythm should be random between 1-6
@@ -51,31 +51,19 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("Player 1 Wins!");
             Debug.Log("Player 2 Loses...");
+            Debug.Log("Player 1 gains XP: " + 25 + (playerOneChanceToWin - playerTwoChanceToWin));
         }
         else if (playerTwoPowerLevel > playerOnePowerLevel)
         {
             Debug.Log("Player 2 Wins!");
             Debug.Log("Player 1 Loses...");
+            Debug.Log("Player 2 gains XP: " + 25 + (playerTwoChanceToWin - playerOneChanceToWin));
         }
 
         if (playerOnePowerLevel == playerTwoPowerLevel)
         {
-            Debug.Log("It's a tie! " + 25);
-        }
-
-        // Debug out how much experience they should gain based on the difference of their chances to win, or if it's a draw award a default amount.
-        if (playerOnePowerLevel > playerTwoPowerLevel)
-        {
-            Debug.Log("Player 1 gains XP: " + (50 + (((playerOneChanceToWin - playerTwoChanceToWin) * 100) / 100)));
-        }
-        else if (playerTwoPowerLevel > playerOnePowerLevel)
-        {
-            Debug.Log("Player 2 gains XP: " + (50 + (((playerOneChanceToWin - playerTwoChanceToWin) * 100) / 100)));
-        }
-        
-        if (playerOnePowerLevel == playerTwoPowerLevel)
-        {
-            Debug.Log("Both players gain XP: " + 25);
+            Debug.Log("It's a tie! ");
+            Debug.Log("Both players gain 25XP");
         }
     }
 }
