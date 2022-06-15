@@ -51,13 +51,13 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("Player 1 Wins!");
             Debug.Log("Player 2 Loses...");
-            Debug.Log("Player 1 gains XP: " + 25 + (playerOneChanceToWin - playerTwoChanceToWin));
+            Debug.Log("Player 1 gains XP: " + (playerOneChanceToWin - playerTwoChanceToWin) + (+ 25));
         }
         else if (playerTwoPowerLevel > playerOnePowerLevel)
         {
             Debug.Log("Player 2 Wins!");
             Debug.Log("Player 1 Loses...");
-            Debug.Log("Player 2 gains XP: " + 25 + (playerTwoChanceToWin - playerOneChanceToWin));
+            Debug.Log("Player 2 gains XP: " + (playerTwoChanceToWin - playerOneChanceToWin) + (+25));
         }
 
         if (playerOnePowerLevel == playerTwoPowerLevel)
